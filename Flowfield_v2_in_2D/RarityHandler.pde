@@ -3,12 +3,11 @@
 // I don't know how to make this more efficient. 
 
 class RarityHandler {
-  
+
   int colRarity = int(random(0, 100));
   int distRarity = int(random(0, 4));
-
+  int backgroundRarity = int(random(100));
   RarityHandler() {
-    
   }
 
   void colSel() {
@@ -42,6 +41,14 @@ class RarityHandler {
     }
   }
 
+  void backgroundSel() {
+    println("backGroundRarity is: " + backgroundRarity);
+    if (backgroundRarity < 20) {
+      form.createFlowBackground();
+    } else
+      form.createAltBackground();
+  }
+
   void distSel() {
 
     println("Global distRarity = " + distRarity);
@@ -50,7 +57,6 @@ class RarityHandler {
     } else if (distRarity == 1) {
       form.createSinWave();
     } else if (distRarity == 2) {
-
       form.createThinRectangle();
     } else if (distRarity ==3) {
       int r = ceil(random(0, 4));
@@ -58,6 +64,8 @@ class RarityHandler {
       for (int i = 0; i < r; i++) {
         form.createCircle();
       }
+    } else if (distRarity == 4) {
+      form.createLemniscate();
     }
   }
 }
